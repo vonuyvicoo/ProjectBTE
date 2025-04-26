@@ -1,53 +1,45 @@
-<img src="https://i.postimg.cc/NFPQmPB0/Mask-group.png" style="width: 50%;" />
+<img src="https://www.dropbox.com/scl/fi/viulr3lyxvlum7vhqvagk/Salford-3.png?rlkey=8jpl2coezs1kr0ue3n33dmg32&st=zjc3b3bn&raw=1" style="width: 50%;" />
 
 
-# Project BEACON  
-A Decentralized, Multi‑Layered Approach for the Convergence and Optimization of Hybrid LoRa–Web Communication Networks
-
+# Project BTE - beyond the eyes. Mapping 3D depth maps to 3D binaural audio.
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Static Badge](https://img.shields.io/badge/NodeJS-green)
-![Static Badge](https://img.shields.io/badge/LoRa-red)
-![Static Badge](https://img.shields.io/badge/ESP32-blue)
+![Static Badge](https://img.shields.io/badge/Python-blue)
 ![MacOS](https://img.shields.io/badge/MacOS-green)
-![Windows](https://img.shields.io/badge/Windows-green)
 
-Boot up the beacon device first by connecting it via a Micro‑USB cable. Once powered on, the device will generate its own Wi‑Fi access point—connect your computer or mobile device to that AP.
+Built for my 12th grade quantitative research at Leyte National High School — STEM. 
 
-Next, in your local development environment:
+## The Idea
+________________________
 
+The idea behind this project heavily relies on the paper by Ranftl et. al., Towards Robust Monocular Depth Estimation: Mixing Datasets for Zero-shot Cross-dataset Transfer, TPAMI 2022. I utilized this [repository](https://github.com/isl-org/MiDaS) for generating depth maps based on a monocular input. I tried working on extending its capabilities towards binocular inputs but due to the time constraint, as it was also for a research competition, I wasn't able to further develop this. 
+
+On the audio side, I am quite an audio guy (I make music!). I used _dearVR Micro_ to generate "3D" transformations of a sine wave. Since _Micro_ has 2 parameters: **elevation** and **azimuth**, I simply mapped out the x and y coordinates of the detected object and used its depth as volume. This approach is oversimplified, and could absolutely be improved much more with trigonometric derivations and such.
+
+_On a side note, this project is quite old and I didn't mind code readability (obviously) at the time lol._
+
+https://github.com/user-attachments/assets/c0938d8e-e30f-4e41-9623-7798eab981b2
+
+## Usage
+________________________
+
+I will update this README with a better documentation in the future, but for now you can simply run
 ```bash
-cd ui
-npm install
-npm start
+python midasDepthMap2.py
 ```
 
-Then open your browser to http://localhost:3000. The web app will connect to the beacon’s AP and communicate over a REST API.
+Make sure to install necessary dependencies as listed in `midasDepthMap2.py`. I will create a requirements.txt file later for better installation flow.
 
-# Overview
-Project BEACON provides a decentralized, multi‑layered bridge between LoRa radio networks and standard web clients. It enables browsers or HTTP‑capable devices to send and receive LoRa messages via a locally hosted REST API.
+There are also static paths on certain files which point to absolute paths on my local environment, you might have to change it on your end.
 
-# Device Initialization
-Power-up: Connect the beacon hardware to USB power via Micro‑USB.
+## Areas for Improvement
+________________________
 
-Wi‑Fi AP: On boot, the device creates its own Wi‑Fi access point—clients simply join that network.
+- Applying the logic behind 3D perspective projection to recreate better the 3D environment
+- Utilizing a better tool for 3D binaural audio (I believe dearVR's Micro might not be enough)
+- Better documentation
 
-# Communication Flow
-HTTP ↔ Beacon: The web app issues REST calls to the beacon’s local IP.
+## License
+________________________
 
-Beacon ↔ LoRa: Beacon translates incoming HTTP requests into outbound LoRa packets (and vice versa).
-
-Bi‑directional Bridge: Enables seamless end‑to‑end messaging between web clients and remote LoRa nodes.
-
-# Key Benefits
-Decentralized: No cloud dependency—everything runs locally.
-
-Multi‑layered: Combines long‑range, low‑power LoRa with familiar HTTP/Web interfaces.
-
-Extensible: Testbed for custom routing logic, resilience strategies, and mixed‑media IoT scenarios.
-
-# Typical Use Cases
-Field deployments where cellular/internet is unreliable
-
-Rapid prototyping of LoRa‑enabled sensor networks
-
-Educational/demo setups illustrating cross‑stack IoT communication
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
+ 
